@@ -8,7 +8,7 @@ class QuotesSpider(scrapy.Spider):
 
     baseurl = 'https://www.margonem.pl/?task=profile&id='
 
-    for i in range(0,1000000):
+    for i in range(37447,37449):
         start_urls.append(baseurl+str(i))
 
     def parse(self, response):
@@ -24,7 +24,7 @@ class QuotesSpider(scrapy.Spider):
         created = response.xpath('//div[@id="inside_bar_left_stats_profile"]/div[3]/div/text()').get()
         created = created.split(" ")[0]
 
-        nick = response.xpath('//p[@id="nick"]/text()').get()
+        nick = response.xpath('//p[@id="nick"]/@tip').get()
 
         yield{
             'id': int(page),
