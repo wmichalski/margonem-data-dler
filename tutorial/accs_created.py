@@ -3,7 +3,7 @@ import plotly.graph_objs as go
 import json
 import datetime
 
-json_file = open('quotes2.json')
+json_file = open('quotes_mil.json')
 json_str = json_file.read()
 json_data = json.loads(json_str)
 

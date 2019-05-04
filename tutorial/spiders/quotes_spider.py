@@ -8,7 +8,7 @@ class QuotesSpider(scrapy.Spider):
 
     baseurl = 'https://www.margonem.pl/?task=profile&id='
 
-    for i in range(37447,37449):
+    for i in range(1000000,1250000):
         start_urls.append(baseurl+str(i))
 
     def parse(self, response):
