@@ -11,16 +11,30 @@ rep_list = []
 post_list = []
 clr_list = []
 nick_list = []
+wsp_list = []
+
+rep_list2= []
+post_list2 = []
+nick_list2 = []
+
 
 for element in json_data:
     posts = element['posts']
     rep = element['rep']
 
+    if (float(rep^2)/1500 + (posts^2)/13000 > 1 ):
+        nick_list2.append(element['nick'])
+        rep_list2.append(element['rep'])
+        post_list2.append(element['posts'])
+
     rep_list.append(rep)
     post_list.append(posts)
+    wsp_list.append(element['wsp'])
     nick_list.append(element['nick'])
 
-    wsp = rep/(100+pow(posts,0.85))+rep/2000
+    # wsp below is completely independent from the value in wsp_list 
+    # we are simply trying to get the exact color instead of the estimated value above
+    wsp = rep/(100+pow(posts,0.85))+float(rep)/2000
 
     clr_s = "#FFFFFF"
 
@@ -39,7 +53,7 @@ for element in json_data:
 
     clr_list.append(clr_s)
 
-trace = go.Scattergl(
+trace1 = go.Scatter(
     x = post_list,
     y = rep_list,
     mode = 'markers',
@@ -47,9 +61,24 @@ trace = go.Scattergl(
         color = clr_list,
         line = dict(width = 1),
     ),
-    text = nick_list
+    text = nick_list,
+    name = ""
 )
-data = [trace]
+
+trace2 = go.Scatter(
+    x = post_list2,
+    y = rep_list2,
+    mode = 'text',
+    text = nick_list2,
+    textposition='bottom right',
+    textfont=dict(
+        size=10,
+        color='#ffffff'
+    )
+)
+
+
+data = [trace1, trace2]
 
 layout = Layout(
     paper_bgcolor='rgb(0,0,0)',
