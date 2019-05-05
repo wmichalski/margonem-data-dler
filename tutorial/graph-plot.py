@@ -22,7 +22,7 @@ for element in json_data:
     posts = element['posts']
     rep = element['rep']
 
-    if (float(rep^2)/1500 + (posts^2)/13000 > 1 ):
+    if (float(pow(rep,2))/pow(1500,2) + float(pow(posts,2))/pow(12500,2) > 1 ):
         nick_list2.append(element['nick'])
         rep_list2.append(element['rep'])
         post_list2.append(element['posts'])
@@ -70,9 +70,9 @@ trace2 = go.Scatter(
     y = rep_list2,
     mode = 'text',
     text = nick_list2,
-    textposition='bottom right',
+    textposition='top right',
     textfont=dict(
-        size=10,
+        size=9,
         color='#ffffff'
     )
 )
