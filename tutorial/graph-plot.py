@@ -23,7 +23,7 @@ nick_list2 = []
 nick_and_rep_list = []
 
 existing_points = {}
-black_list = [u"Banownik", u"Sirtuś"]
+black_list = [u"Banownik", u"Sirtuś", u"Sirtek"]
 
 for element in json_data:
     posts = element['posts']

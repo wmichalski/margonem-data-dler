@@ -1,2 +1,0 @@
-Run to print data to example.json:
-    scrapy crawl quotes -o example2.json
