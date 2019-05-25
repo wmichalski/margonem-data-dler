@@ -2,7 +2,6 @@ import scrapy
 import json
 
 
-
 class QuotesSpider(scrapy.Spider):
     name = "chars"
 
@@ -10,7 +9,7 @@ class QuotesSpider(scrapy.Spider):
 
     baseurl = 'https://www.margonem.pl/?task=profile&id='
 
-    json_file = open('tutorial/id_list.json')
+    json_file = open('tutorial/id_list_total.json')
     json_str = json_file.read()
     json_data = json.loads(json_str)
     json_data2 = json.loads(json_data)

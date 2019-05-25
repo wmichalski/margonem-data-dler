@@ -1,5 +1,7 @@
 import scrapy
 import json
+import re
+import io
 
 
 class QuotesSpider(scrapy.Spider):
@@ -9,15 +11,11 @@ class QuotesSpider(scrapy.Spider):
 
     baseurl = 'https://www.margonem.pl/?task=profile&id='
 
-    # json_file = open('tutorial/id_list.json')
-    # json_str = json_file.read()
-    # json_data = json.loads(json_str)
-    # json_data2 = json.loads(json_data)
+    json_file = open('./tutorial/id_list.json')
+    json_str = json_file.read()
+    json_data = json.loads(json_str)
 
-    # for i in json_data2:
-    #     start_urls.append(baseurl+str(i))
-
-    for i in range(8000000,9000000):
+    for i in json_data:
         start_urls.append(baseurl+str(i))
 
     def parse(self, response):
@@ -35,12 +33,38 @@ class QuotesSpider(scrapy.Spider):
 
         nick = response.xpath('//p[@id="nick"]/@tip').get()
 
+        text = response.xpath('//body').extract()
+
+        #bany
+        found_or_no = [m.start() for m in re.finditer('Konto czasowo zablokowane', str(text))]
+        if not found_or_no:
+            status = " "
+        else:
+            status = "temp ban"
+
+        found_or_no = [m.start() for m in re.finditer('Konto zablokowane', str(text))]
+        if found_or_no:
+            status = "perm ban"
+
+        #kb
+        found_or_no = [m.start() for m in re.finditer('kb-small', str(text))]
+        if not found_or_no:
+            kb = 0
+        else:
+            kb = 1
+
+        found_or_no = [m.start() for m in re.finditer('postacie//crimson', str(text))]
+        if found_or_no:
+            kb = 1
+
         yield{
             'id': int(page),
             'posts': int(posts),
             'rep': int(rep),
             'wsp': float(wsp),
             'created': created,   
-            'nick': nick,     
+            'nick': nick,   
+            'status': status,
+            'kb': kb
         }
 

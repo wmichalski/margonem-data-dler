@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+# the graph shows id and date of posts, making a nice graph of activity od users
+
 import plotly.plotly as py
 import plotly.graph_objs as go
 from plotly.graph_objs import *

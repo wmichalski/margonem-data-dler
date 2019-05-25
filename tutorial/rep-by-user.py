@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+# it show rep that each user got from the margomemy thread
+
 import plotly.plotly as py
 import plotly.graph_objs as go
 from plotly.graph_objs import *

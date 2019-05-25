@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+# it makes a graph of posts in margomemy by date
+
 import plotly.plotly as py
 import plotly.graph_objs as go
 from plotly.graph_objs import *

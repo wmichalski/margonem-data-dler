@@ -1,5 +1,7 @@
 import json
 
+# getting a list of ids of existing players from data that was earlier scrapped from profiles 
+
 json_file = open('data-3m.json')
 json_str = json_file.read()
 json_data = json.loads(json_str)
