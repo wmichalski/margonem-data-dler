@@ -1,0 +1,10 @@
+tutorial/bin
+tutorial/item_piecharts/all_classes/filtered-items.json
+tutorial/item_piecharts/single_class/DASHBOARD.html
+tutorial/item_piecharts/single_class/filtered-items.json
+tutorial/item_piecharts/single_class/bin
+tutorial/item_piecharts/item-data-source.json
+tutorial/bot_stuff
+tutorial/item_piecharts/bot-detector-2/bin/*
+tutorial/item_piecharts/searching/bin/*
+tutorial/outfits/bin/*

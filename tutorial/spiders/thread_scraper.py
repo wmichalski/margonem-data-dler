@@ -1,13 +1,14 @@
 import scrapy
 import re
 
+# this spider downloads data about posts in specific threads
 
 class PostsSpider(scrapy.Spider):
     name = "posts"
 
     start_urls = []
 
-    baseurl = 'https://www.margonem.pl/?task=forum&show=posts&id=247945&ps='
+    baseurl = 'https://www.margonem.pl/?task=forum&show=posts&id=7606&ps='
 
     for i in range(0,1000):
         start_urls.append(baseurl+str(i))
@@ -40,7 +41,7 @@ class PostsSpider(scrapy.Spider):
             yield{
                 'id': int(id),    
                 'date': date,
-                'nick': nick,
-                'rep': int(rep),
+                #'nick': nick,
+                #'rep': int(rep),
             }
 
